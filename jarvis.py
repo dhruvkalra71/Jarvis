@@ -4,11 +4,24 @@ from google.genai import types
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-query = input("Enter your query: ")
 
-response = client.models.generate_content(
-    model = "gemini-2.0-flash",
-    contents = query
-)
+def query_response():
+    query = input("Enter your query: ")
 
-print(response.text)
+    response = client.models.generate_content_stream(
+        model = "gemini-2.0-flash",
+        contents = query
+    )
+
+    for stream in response:
+        print(stream.text)
+
+def new_chat():
+    chat = client.chats.create(model = "gemini-2.0-flash")
+    while True:
+        message = input("> ")
+        if message == "exit":
+            break
+
+        res = chat.send_message(message)
+        print(res.text)
