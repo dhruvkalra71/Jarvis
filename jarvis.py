@@ -25,3 +25,7 @@ def new_chat():
 
         res = chat.send_message(message)
         print(res.text)
+
+
+if __name__ == "__main__":
+    new_chat()
