@@ -46,6 +46,25 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+# Take command from user
+def takecommand():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 0.8
+        audio = r.listen(source)
+
+    try:
+        print("Recognising...")
+        query = r.recognize_google(audio, language='en-in')
+        print(query)
+
+    except Exception as e:
+        print("Say that again please...")
+        return "None"
+
+    return query
+
 def query_response():
     query = input("Enter your query: ")
 
