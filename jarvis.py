@@ -15,7 +15,8 @@
     pip install pywhatkit
     pip install google-genai
 """
-#Dependencies/Requirements for speech recognition and text-to-speech 
+
+# Dependencies/Requirements for speech recognition and text-to-speech 
 from gtts import gTTS
 import pyttsx3
 import datetime
@@ -25,13 +26,25 @@ import webbrowser
 import mathlib
 import pywhatkit as kit
 
-#Dependencies/Requirements for Gemini API 
+# Dependencies/Requirements for Gemini API 
 import os
 import base64
 from google import genai
 from google.genai import types
 
+# Gemini API call
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+# Speech Recognition Properties Setup
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[0].id)
+engine.setProperty('rate', 130)
+
+# Speak Command
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
 
 def query_response():
     query = input("Enter your query: ")
