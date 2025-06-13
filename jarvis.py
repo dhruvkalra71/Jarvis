@@ -1,6 +1,33 @@
+"""
+    py -m pipwin install pyaudio   (or)
+
+    pip install pipwin
+    pipwin install pyaudio
+
+    pip install gtts
+    pip install pyttsx3
+    pip install datetime
+    pip install speechrecognition
+    pip install webbrowser
+    pip install os
+    pip install smtplib
+    pip install mathlib
+    pip install pywhatkit
+    pip install google-genai
+"""
+#Dependencies/Requirements for speech recognition and text-to-speech 
+from gtts import gTTS
+import pyttsx3
+import datetime
+import speech_recognition as sr
+
+import webbrowser
+import mathlib
+import pywhatkit as kit
+
+#Dependencies/Requirements for Gemini API 
 import os
 import base64
-# pip install google-genai
 from google import genai
 from google.genai import types
 
